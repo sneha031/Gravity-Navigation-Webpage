@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Gravity Aided Navigation in GNSS Denied Environments
+    </title>
+
+    <style>
+
+        :root {
+            --text: #f5f7fa;
+            --muted: #d6d9de;
+
+            --panel: rgba(14, 18, 22, 0.82);
+            --panel-border: rgba(255, 255, 255, 0.15);
+
+            --accent: #1f5f3a;
+            --accent-hover: #2f7a4d;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            color: var(--text);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    rgba(5, 8, 11, 0.82),
+                    rgba(5, 8, 11, 0.90)
+                ),
+                url("../02_images_animations/earth.jpg")
+                center center
+                / cover
+                fixed
+                no-repeat;
+        }
+
+        .page {
+
+            width: min(
+                1120px,
+                calc(100% - 32px)
+            );
+
+            margin: 0 auto;
+
+            padding:
+                72px
+                0
+                64px;
+        }
+
+        .hero {
+
+            text-align: center;
+
+            margin-bottom: 34px;
+        }
+
+        .hero h1 {
+
+            margin:
+                0
+                0
+                14px;
+
+            font-size:
+                clamp(
+                    2.2rem,
+                    5vw,
+                    4.1rem
+                );
+
+            line-height: 1.05;
+
+            letter-spacing: -0.03em;
+        }
+
+        .hero p {
+
+            max-width: 800px;
+
+            margin: 0 auto;
+
+            color: var(--muted);
+
+            font-size: 1.05rem;
+
+            line-height: 1.7;
+        }
+
+        .card {
+
+            margin: 24px 0;
+
+            padding: 28px;
+
+            border:
+                1px
+                solid
+                var(--panel-border);
+
+            border-radius: 18px;
+
+            background: var(--panel);
+
+            backdrop-filter: blur(8px);
+
+            -webkit-backdrop-filter:
+                blur(8px);
+
+            box-shadow:
+                0
+                18px
+                50px
+                rgba(0, 0, 0, 0.28);
+        }
+
+        .card h2 {
+
+            text-align: center;
+
+            margin:
+                0
+                0
+                12px;
+
+            font-size: 1.55rem;
+        }
+
+        .overview p,
+        .animation-card p {
+
+            margin: 0;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+        }
+
+        .animation-card {
+
+            text-align: center;
+        }
+
+        .animation-card .description {
+
+            max-width: 820px;
+
+            margin:
+                0
+                auto
+                20px;
+        }
+
+        .animation-frame {
+
+            margin-top: 20px;
+
+            padding: 10px;
+
+            overflow: hidden;
+
+            border-radius: 14px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
+
+            border:
+                1px
+                solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.12
+                );
+        }
+
+        .animation-frame img {
+
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            border-radius: 9px;
+
+            background: #ffffff;
+        }
+
+        .download-section {
+
+            width: 100%;
+
+            text-align: center;
+
+            margin-top: 34px;
+
+            margin-bottom: 20px;
+        }
+
+        .download-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 50px;
+
+            padding:
+                0
+                28px;
+
+            border-radius: 999px;
+
+            color: #ffffff;
+
+            background: var(--accent);
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            box-shadow:
+                0
+                8px
+                24px
+                rgba(0, 0, 0, 0.30);
+
+            transition:
+                transform
+                0.2s
+                ease,
+                background
+                0.2s
+                ease,
+                box-shadow
+                0.2s
+                ease;
+        }
+
+        .download-button:hover {
+
+            background: var(--accent-hover);
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0
+                12px
+                28px
+                rgba(0, 0, 0, 0.38);
+        }
+
+        @media (
+            max-width: 700px
+        ) {
+
+            .page {
+
+                width:
+                    min(
+                        100% - 20px,
+                        1120px
+                    );
+
+                padding-top: 42px;
+            }
+
+            .card {
+
+                padding: 18px;
+
+                border-radius: 14px;
+            }
+
+            .hero p {
+
+                font-size: 0.98rem;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="page">
+
+
+        <header class="hero">
+
+            <h1>
+                Gravity Aided Navigation in GNSS Denied Environments
+            </h1>
+
+            <p>
+                A simulation-based research project investigating
+                how gravity maps can support inertial navigation
+                when GNSS is unavailable.
+            </p>
+
+        </header>
+
+
+        <section class="card overview">
+
+            <h2>
+                Project Overview
+            </h2>
+
+            <p>
+
+                This project simulates an aircraft moving through
+                the Patterson Lake gravity field and evaluates
+                several gravity-aided navigation approaches.
+
+                The code models INS drift, generates simulated
+                gravity measurements, applies TERCOM map matching
+                using Free Air gravity and vertical gravity-gradient
+                information, implements OMSL-ICCP gravity matching,
+                and evaluates A* route-planning strategies designed
+                to improve gravity-aided positioning performance.
+
+            </p>
+
+        </section>
+
+
+        <section class="card animation-card">
+
+            <h2>
+                TERCOM Gravity-Aided Navigation
+            </h2>
+
+            <p class="description">
+
+                This animation compares the simulated aircraft path
+                with the drifting INS solution, Free Air TERCOM
+                navigation, and the combined Free Air gravity and
+                vertical-gradient TERCOM solution.
+
+            </p>
+
+            <div class="animation-frame">
+
+                <img
+                    src="../02_images_animations/gravity_aided_navigation_animation.gif"
+                    alt="TERCOM gravity-aided navigation animation"
+                >
+
+            </div>
+
+        </section>
+
+
+        <section class="card animation-card">
+
+            <h2>
+                OMSL-ICCP with A* Route Planning
+            </h2>
+
+            <p class="description">
+
+                This animation compares OMSL-ICCP navigation across
+                four route-planning approaches: shortest-path A*,
+                PCRB gravity-aware A*, OMSL-aware A*, and
+                sequence-aware A*.
+
+            </p>
+
+            <div class="animation-frame">
+
+                <img
+                    src="../02_images_animations/astar_omsl_routes_animation_gravity.gif"
+                    alt="OMSL-ICCP A-star route-planning animation"
+                >
+
+            </div>
+
+        </section>
+
+
+        <div class="download-section">
+
+            <a
+                class="download-button"
+                href="final_report.pdf"
+                download
+            >
+                Download Research Report
+            </a>
+
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>
