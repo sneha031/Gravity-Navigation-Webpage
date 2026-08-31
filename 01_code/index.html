@@ -18,22 +18,31 @@
     <style>
 
         :root {
+
             --text: #f5f7fa;
+
             --muted: #d6d9de;
 
             --panel: rgba(14, 18, 22, 0.82);
+
             --panel-border: rgba(255, 255, 255, 0.15);
 
             --accent: #1f5f3a;
+
             --accent-hover: #2f7a4d;
+
         }
 
         * {
+
             box-sizing: border-box;
+
         }
 
         html {
+
             scroll-behavior: smooth;
+
         }
 
         body {
@@ -51,14 +60,15 @@
 
             background:
                 linear-gradient(
-                    rgba(5, 8, 11, 0.82),
-                    rgba(5, 8, 11, 0.90)
+                    rgba(5, 8, 11, 0.45),
+                    rgba(5, 8, 11, 0.60)
                 ),
                 url("../02_images_animations/earth.jpg")
                 center center
                 / cover
                 fixed
                 no-repeat;
+
         }
 
         .page {
@@ -74,6 +84,7 @@
                 72px
                 0
                 64px;
+
         }
 
         .hero {
@@ -81,6 +92,7 @@
             text-align: center;
 
             margin-bottom: 34px;
+
         }
 
         .hero h1 {
@@ -100,11 +112,12 @@
             line-height: 1.05;
 
             letter-spacing: -0.03em;
+
         }
 
         .hero p {
 
-            max-width: 800px;
+            max-width: 850px;
 
             margin: 0 auto;
 
@@ -113,6 +126,7 @@
             font-size: 1.05rem;
 
             line-height: 1.7;
+
         }
 
         .card {
@@ -140,6 +154,7 @@
                 18px
                 50px
                 rgba(0, 0, 0, 0.28);
+
         }
 
         .card h2 {
@@ -149,9 +164,10 @@
             margin:
                 0
                 0
-                12px;
+                16px;
 
             font-size: 1.55rem;
+
         }
 
         .overview p,
@@ -162,21 +178,110 @@
             color: var(--muted);
 
             line-height: 1.7;
+
+        }
+
+        .overview p + p,
+        .animation-card p + p {
+
+            margin-top: 14px;
+
         }
 
         .animation-card {
 
             text-align: center;
+
         }
 
         .animation-card .description {
 
-            max-width: 820px;
+            max-width: 880px;
 
             margin:
                 0
                 auto
-                20px;
+                18px;
+
+        }
+
+        .result-box {
+
+            max-width: 880px;
+
+            margin:
+                22px
+                auto
+                22px;
+
+            padding:
+                18px
+                22px;
+
+            text-align: left;
+
+            border-radius: 12px;
+
+            border:
+                1px
+                solid
+                rgba(255, 255, 255, 0.12);
+
+            background:
+                rgba(255, 255, 255, 0.05);
+
+        }
+
+        .result-box p {
+
+            margin: 0;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+        }
+
+        .result-box p + p {
+
+            margin-top: 12px;
+
+        }
+
+        .result-box strong {
+
+            color: var(--text);
+
+        }
+
+        .route-list {
+
+            max-width: 880px;
+
+            margin:
+                20px
+                auto;
+
+            padding-left: 24px;
+
+            text-align: left;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+        }
+
+        .route-list li {
+
+            margin-bottom: 12px;
+
+        }
+
+        .route-list strong {
+
+            color: var(--text);
+
         }
 
         .animation-frame {
@@ -206,6 +311,7 @@
                     255,
                     0.12
                 );
+
         }
 
         .animation-frame img {
@@ -219,6 +325,7 @@
             border-radius: 9px;
 
             background: #ffffff;
+
         }
 
         .download-section {
@@ -230,6 +337,7 @@
             margin-top: 34px;
 
             margin-bottom: 20px;
+
         }
 
         .download-button {
@@ -272,6 +380,7 @@
                 box-shadow
                 0.2s
                 ease;
+
         }
 
         .download-button:hover {
@@ -286,6 +395,7 @@
                 12px
                 28px
                 rgba(0, 0, 0, 0.38);
+
         }
 
         @media (
@@ -301,6 +411,7 @@
                     );
 
                 padding-top: 42px;
+
             }
 
             .card {
@@ -308,12 +419,23 @@
                 padding: 18px;
 
                 border-radius: 14px;
+
             }
 
             .hero p {
 
                 font-size: 0.98rem;
+
             }
+
+            .result-box {
+
+                padding:
+                    16px
+                    17px;
+
+            }
+
         }
 
     </style>
@@ -333,9 +455,13 @@
             </h1>
 
             <p>
-                A simulation-based research project investigating
-                how gravity maps can support inertial navigation
-                when GNSS is unavailable.
+                A research project investigating how gravity data, gravity map matching, and different
+                gravity aware routes can support navigation when GNSS is unavailable.
+                This is particularly important in situations where GNSS
+                jamming or spoofing may prevent reliable positioning. An Inertial Navigation
+                System can continue to provide navigation without GNSS, but its position error increases
+                over time. This research investigates whether gravity measurements and gravity based route
+                planning can be used to help correct this INS drift and improve navigation performance.
             </p>
 
         </header>
@@ -348,18 +474,31 @@
             </h2>
 
             <p>
+                This project simulates an aircraft travelling through the
+                Patterson Lake airborne gravity survey area. The aircraft
+                follows a known true path and gravity measurements are
+                simulated along this route. An INS only path is then created
+                with increasing navigation error to show how the INS can
+                continue to drift when GNSS corrections are no longer
+                available.
+            </p>
 
-                This project simulates an aircraft moving through
-                the Patterson Lake gravity field and evaluates
-                several gravity-aided navigation approaches.
+            <p>
+                Gravity Aided Navigation methods are then used to compare the
+                simulated gravity measurements with stored gravity maps and
+                correct the INS position. The first part of the research tests
+                TERCOM map matching using the Free Air gravity anomaly and
+                then compares this with a second TERCOM method that uses both
+                the Free Air gravity anomaly & the First Vertical Derivative
+                gravity layer.
+            </p>
 
-                The code models INS drift, generates simulated
-                gravity measurements, applies TERCOM map matching
-                using Free Air gravity and vertical gravity-gradient
-                information, implements OMSL-ICCP gravity matching,
-                and evaluates A* route-planning strategies designed
-                to improve gravity-aided positioning performance.
-
+            <p>
+                The project also tests an implementation of
+                OMSL-ICCP as another gravity matching method. A* route planning
+                is then added to test whether choosing routes that travel
+                through different gravity regions can affect the performance
+                of Gravity Aided Navigation.
             </p>
 
         </section>
@@ -368,23 +507,64 @@
         <section class="card animation-card">
 
             <h2>
-                TERCOM Gravity-Aided Navigation
+                TERCOM Gravity Aided Navigation
             </h2>
 
             <p class="description">
-
-                This animation compares the simulated aircraft path
-                with the drifting INS solution, Free Air TERCOM
-                navigation, and the combined Free Air gravity and
-                vertical-gradient TERCOM solution.
-
+                This animation shows the known true aircraft path, the
+                drifting INS only path, and the two TERCOM Gravity Aided
+                Navigation solutions. The first method uses only the Free Air
+                gravity anomaly for map matching. The second method uses both
+                the Free Air gravity anomaly & the First Vertical Derivative
+                gravity layer to test whether adding another gravity layer can
+                provide more information during map matching and improve the
+                position correction.
             </p>
+
+            <div class="result-box">
+
+                <p>
+                    <strong>INS Only:</strong>
+                    Over the common evaluation interval, the INS-only path had
+                    an RMSE of approximately <strong>4.603 km</strong>.
+                </p>
+
+                <p>
+                    <strong>Gravity Only TERCOM:</strong>
+                    Using the Free Air gravity anomaly for map matching reduced
+                    the RMSE to approximately <strong>1.105 km</strong>.
+                </p>
+
+                <p>
+                    <strong>Free Air & Vertical Gravity Gradient TERCOM:</strong>
+                    Using both the Free Air gravity anomaly & the First Vertical
+                    Derivative gravity layer reduced the RMSE further to
+                    approximately <strong>1.071 km</strong>.
+                </p>
+
+                <p>
+                    Overall, the two map TERCOM method reduced the INS only
+                    RMSE by approximately <strong>76.7%</strong>. It also gave
+                    an additional improvement of approximately
+                    <strong>3.1%</strong> compared with using the Free Air
+                    gravity anomaly alone.
+                </p>
+
+                <p>
+                    These results show that gravity map matching was able to
+                    greatly reduce the simulated INS drift. Adding the First
+                    Vertical Derivative gravity layer also improved the result,
+                    although the improvement compared with Gravity Only TERCOM
+                    alone was smaller.
+                </p>
+
+            </div>
 
             <div class="animation-frame">
 
                 <img
                     src="../02_images_animations/gravity_aided_navigation_animation.gif"
-                    alt="TERCOM gravity-aided navigation animation"
+                    alt="TERCOM gravity aided navigation animation"
                 >
 
             </div>
@@ -399,19 +579,108 @@
             </h2>
 
             <p class="description">
-
-                This animation compares OMSL-ICCP navigation across
-                four route-planning approaches: shortest-path A*,
-                PCRB gravity-aware A*, OMSL-aware A*, and
-                sequence-aware A*.
-
+                The second animation tests whether the route travelled through
+                the gravity field can affect Gravity Aided Navigation
+                performance. Four different A* routes are created using
+                different ways of including gravity information during route
+                planning. The same OMSL-ICCP gravity matching method is then
+                run along each route so that the navigation results can be
+                compared.
             </p>
+
+
+            <ul class="route-list">
+
+                <li>
+                    <strong>Route A - Shortest A*:</strong>
+                    Route A uses a standard A* algorithm and mainly searches
+                    for the shortest route between the selected start and goal
+                    locations. This route is used as the baseline for the other
+                    A* routes.
+                </li>
+
+                <li>
+                    <strong>Route B - PCRB Gravity-Aware A*:</strong>
+                    Route B adds gravity information into the A* cost using a
+                    Posterior Cramer-Rao Bound based approach. The goal is to
+                    guide the aircraft through gravity regions that are
+                    expected to provide better positioning information.
+                </li>
+
+                <li>
+                    <strong>Route C - OMSL-Aware A*:</strong>
+                    Route C uses local gravity distinctiveness when selecting
+                    the path. The goal is to travel through gravity regions
+                    that may be easier to identify during OMSL-ICCP gravity
+                    matching.
+                </li>
+
+                <li>
+                    <strong>Route D - Sequence-Aware A*:</strong>
+                    Route D looks at the gravity information along a sequence
+                    of locations instead of only looking at one location at a
+                    time. This was used to better represent how OMSL-ICCP uses
+                    a sequence of gravity measurements during matching.
+                </li>
+
+            </ul>
+
+
+            <div class="result-box">
+
+                <p>
+                    <strong>Route A:</strong>
+                    Route A travelled approximately <strong>109.0 km</strong>
+                    and had an OMSL-ICCP RMSE of approximately
+                    <strong>1.307 km</strong>. This route had the lowest
+                    overall RMSE out of the four routes.
+                </p>
+
+                <p>
+                    <strong>Route B:</strong>
+                    Route B travelled approximately <strong>113.2 km</strong>
+                    and had an OMSL-ICCP RMSE of approximately
+                    <strong>1.528 km</strong>. The final position error was
+                    approximately <strong>1.110 km</strong>.
+                </p>
+
+                <p>
+                    <strong>Route C:</strong>
+                    Route C travelled approximately <strong>112.8 km</strong>
+                    and had an OMSL-ICCP RMSE of approximately
+                    <strong>1.701 km</strong>. Even though the overall RMSE
+                    was higher, Route C had the lowest final position error at
+                    approximately <strong>1.059 km</strong>.
+                </p>
+
+                <p>
+                    <strong>Route D:</strong>
+                    Route D travelled approximately <strong>113.2 km</strong>
+                    and had an OMSL-ICCP RMSE of approximately
+                    <strong>1.493 km</strong>. Out of the three gravity aware
+                    routes, Routes B, C, and D, Route D had the lowest overall
+                    RMSE.
+                </p>
+
+                <p>
+                    Overall, Route A still had the lowest OMSL-ICCP RMSE even
+                    though it was the standard shortest A* route. Route D
+                    performed the best out of the gravity aware routes, while
+                    Route C had the lowest final position error. These results
+                    show that changing the route based on gravity information
+                    can affect the navigation results, but these
+                    routes did not always perform better than the shorter
+                    baseline route.
+                </p>
+
+            </div>
+
 
             <div class="animation-frame">
 
                 <img
                     src="../02_images_animations/astar_omsl_routes_animation_gravity.gif"
-                    alt="OMSL-ICCP A-star route-planning animation"
+                    alt="OMSL-ICCP A-star route planning animation"
                 >
 
             </div>
