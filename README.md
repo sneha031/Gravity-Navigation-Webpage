@@ -1,4 +1,4 @@
-# # Simulation of Gravity Data for GPS Denied Navigation Webpage
+## Simulation of Gravity Data for GPS Denied Navigation Webpage
 
 The purpose of this webpage is to provide a simple visual overview of the research on Gravity Aided Navigation in GNSS denied environments.
 
