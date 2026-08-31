@@ -63,7 +63,7 @@
                     rgba(5, 8, 11, 0.45),
                     rgba(5, 8, 11, 0.60)
                 ),
-                url("../02_images_animations/earth.jpg")
+                url("02_images_animations/earth.jpg")
                 center center
                 / cover
                 fixed
@@ -328,7 +328,7 @@
 
         }
 
-        .download-section {
+        .contact-section {
 
             width: 100%;
 
@@ -340,7 +340,7 @@
 
         }
 
-        .download-button {
+        .contact-bubble {
 
             display: inline-flex;
 
@@ -360,8 +360,6 @@
 
             background: var(--accent);
 
-            text-decoration: none;
-
             font-weight: 700;
 
             box-shadow:
@@ -370,31 +368,21 @@
                 24px
                 rgba(0, 0, 0, 0.30);
 
-            transition:
-                transform
-                0.2s
-                ease,
-                background
-                0.2s
-                ease,
-                box-shadow
-                0.2s
-                ease;
+        }
+
+        .contact-bubble a {
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            margin-left: 5px;
 
         }
 
-        .download-button:hover {
+        .contact-bubble a:hover {
 
-            background: var(--accent-hover);
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0
-                12px
-                28px
-                rgba(0, 0, 0, 0.38);
+            text-decoration: underline;
 
         }
 
@@ -433,6 +421,16 @@
                 padding:
                     16px
                     17px;
+
+            }
+
+            .contact-bubble {
+
+                padding:
+                    12px
+                    20px;
+
+                flex-wrap: wrap;
 
             }
 
@@ -563,7 +561,7 @@
             <div class="animation-frame">
 
                 <img
-                    src="../02_images_animations/gravity_aided_navigation_animation.gif"
+                    src="02_images_animations/gravity_aided_navigation_animation.gif"
                     alt="TERCOM gravity aided navigation animation"
                 >
 
@@ -679,7 +677,7 @@
             <div class="animation-frame">
 
                 <img
-                    src="../02_images_animations/astar_omsl_routes_animation_gravity.gif"
+                    src="02_images_animations/astar_omsl_routes_animation_gravity.gif"
                     alt="OMSL-ICCP A-star route planning animation"
                 >
 
@@ -688,15 +686,17 @@
         </section>
 
 
-        <div class="download-section">
+        <div class="contact-section">
 
-            <a
-                class="download-button"
-                href="../03_final_report/Final_Report.pdf"
-                download="Final_Report.pdf"
-            >
-                Download Research Report
-            </a>
+            <div class="contact-bubble">
+
+                For more details, please contact
+
+                <a href="mailto:ismael.foroughi@ucalgary.ca">
+                    ismael.foroughi@ucalgary.ca
+                </a>
+
+            </div>
 
         </div>
 
